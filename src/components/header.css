@@ -1,0 +1,270 @@
+.sticky-nav{
+    position: sticky;
+    top: 0;
+    transition: 0.2s linear;
+}
+.sticky-nav nav{
+    background-color:rgba(0, 0, 0, 0.592) ;
+    transition: background-color 0.4s ease;
+}
+
+nav {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 20px;
+    color: white;
+    z-index: 1000;
+    /* position: fixed; */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    border: 1px solid black;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border: 1px solid red;
+
+
+}
+
+.nav-links li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+
+/* -----dropdown----------------------------------------------------- */
+
+.dd {
+    position: relative;
+}
+
+.ser-dd {
+    display: flex;
+    position: absolute;
+    top: 42px;
+    left: -50%;
+    transform: translate(0 -50%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s linear;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.338);
+    width: 600px;
+    padding: 20px;
+}
+
+.dd:hover .ser-dd {
+    /* display: block; */
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.ser-dd ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    /* text-align: center; */
+    width: 100%;
+}
+
+.ser-dd li {
+    padding: 10px;
+}
+
+.ser-dd a {
+    color: white;
+}
+
+
+
+.ser-dd a:hover {
+    color: blue;
+
+}
+
+.ser-dd li:hover {
+    background-color: rgba(209, 208, 205, 0.816);
+    /* width: 100%; */
+    border-radius: 5px;
+}
+
+/* ---------dropdown---------------------------------------------------- */
+
+
+.nav-icons i {
+    margin: 0 20px;
+}
+
+
+
+/* -------mobile-nav----------------------------------------------------- */
+
+.mbl-nav {
+    display: none;
+}
+
+
+
+.mbl-nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    transform: translateX(-440px);
+    transition: 0.45s linear;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    width: 400px;
+    /* padding: 10px 0; */
+
+}
+
+.mbl-nav a {
+    color: black;
+}
+
+.show-mbl-nav {
+    transform: translateX(0px);
+
+}
+
+.mbl-nav ul {
+    flex-direction: column;
+    
+}
+.mbl-nav li{
+   padding:20px 30px ;
+   border-top: 1px solid gray;
+}
+.mbl-nav .nav-icons i {
+    margin: 20px 30px;
+    font-size: 20px;
+}
+
+/* -------mobile-nav----------------------------------------------------- */
+
+/* -------mbl-dropdown--------------------------------------------------- */
+.mbl-dd {
+    position: relative;
+}
+
+.mbl-dd a i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10px);
+    right: 10px;
+    border-left: 1px solid gray ;
+    width: fit-content;
+    height: 0px;
+    text-align: right;
+}
+.show-mbl-dd{
+    display: none;
+}
+
+
+/* ---------------hamburger menu------------------ */
+
+
+.menu-icon,.close-icon {
+    display: none;
+    height: fit-content;
+}
+
+.menu-icon span {
+    display: block;
+    /* position: relative; */
+    background-color: white;
+    height: 2px;
+    width: 20px;
+    opacity: 1;
+    margin-top: 4px;
+}
+.close-icon span{
+    display: block;
+    background-color: white;
+    width: 20px;
+    height: 2px;
+    margin-top: 4px;
+    transition: 0.4s linear;
+}
+.close-icon span:nth-child(1){
+    width: 24px;
+    transform: rotate(45deg);
+    margin-top: 6px;
+}
+.close-icon span:nth-child(3){
+    width: 24px;
+    margin-top: -7px;
+    transform: rotate(-45deg);
+}
+.close-icon span:nth-child(2){
+   opacity: 0;
+}
+
+
+/* ---------------hamburger menu------------------ */
+
+
+@media (max-width:990px) {
+    nav {
+        justify-content: space-between;
+    }
+
+    .des-view {
+        display: none;
+    }
+
+    .mbl-nav {
+        display: flex;
+    }
+
+    /* ---------------hamburger menu------------------ */
+    .menu-icon, .close-icon {
+        display: block;
+    }
+    /* ---------------hamburger menu------------------ */
+
+
+}
+
+
+
+.hero-img {
+    height: 100vh;
+    width: 100%;
+    margin-top: -67px;
+    position: relative;
+    z-index: -2000;
+
+}
+
+.hero-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.hero-img::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(245, 50, 50, 0.215);
+    z-index: 1000;
+}
