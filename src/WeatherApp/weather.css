@@ -1,0 +1,30 @@
+.weather-app {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .weather-app input {
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .weather-app button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .weather-info {
+    margin-top: 20px;
+  }
+  
+  .weather-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .weather-info p {
+    font-size: 18px;
+  }
+  

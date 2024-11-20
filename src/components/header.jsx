@@ -4,25 +4,35 @@ import '../components/header.css'
 
 const Header = () => {
 
-  const [menu,setMenu] = useState(false)
-  const [navbar , setNavbar]=useState(false)
+  const [menu, setMenu] = useState(false)
+  const [navbar, setNavbar] = useState(false)
+  const [activedd, setActivedd]=useState(null)
 
-  
-  useEffect(()=>{
-    window.addEventListener("scroll",()=>{
-      if(window.scrollY){
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY) {
         setNavbar(true)
       }
-      else{
+      else {
         setNavbar(false)
       }
     })
   })
 
+  const angleDownFunc=(e,key)=>{
+    e.preventDefault()
+    setActivedd((prevkey)=>
+      prevkey === key ? null : key
+    )
+  }
+
   return (
     <>
 
       <header className={`${navbar ? "sticky-nav" : ""}`}>
+        {/* <header className="sticky-nav"> */}
+
         <nav className='des-nav'>
           <div className='nav-brand'>Navbar</div>
 
@@ -34,17 +44,17 @@ const Header = () => {
                 <div className='ser-dd'>
                   <ul>
                     <li>
-                      <a href="Service 1">Service 1</a></li>
-                    <li><a href="Service 2">Service 2</a></li>
-                    <li> <a href="Service 3">Service 3</a></li>
-                    <li> <a href="Service 4">Service 4</a></li>
-                    <li> <a href="Service 5">Service 5</a></li>
+                      <a href="#Service1" >Service 1</a></li>
+                    <li><a href="#Service2">Service 2</a></li>
+                    <li> <a href="#Service3">Service 3</a></li>
+                    <li> <a href="#Service4">Service 4</a></li>
+                    <li> <a href="#Service5">Service 5</a></li>
                   </ul>
                   <div className='ser-img'>
-                    <img src="/logo192.png" alt="image" id=''/>
-                    <img src="/logo512.png" alt="image" />
-                    <img src="/logo192.png" alt="image" />
-                  
+                    <img className='active' id="Service1" src="/logo192.png" alt="image" />
+                    <img src="/logo512.png" id="Service2" alt="image" />
+                    <img src="/logo192.png" id="Service3" alt="image" />
+
                   </div>
                 </div>
               </li>
@@ -73,71 +83,81 @@ const Header = () => {
             </div>
           </div>
 
-          <div className={`${menu ? "close-icon" : "menu-icon"}`} onClick={()=>setMenu(!menu)}>
+          <div className={`${menu ? "close-icon" : "menu-icon"}`} onClick={() => setMenu(!menu)}>
             <span></span>
             <span></span>
             <span></span>
           </div>
 
 
-           {/* -----------mbl-nav------------ */}
+          {/* -----------mbl-nav------------ */}
 
-          <div className= {`mbl-nav ${menu ? "show-mbl-nav" :""} nav-links`}>
-          <ul>
-              <li><a href="Home">Home</a></li>
-              <li><a href="About">About</a></li>
-              <li className='mbl-dd'>
-                <a href="Products">Products
-                <i class="fa-solid fa-angle-right"></i>
-                </a>
-                
-                <div className='show-mbl-dd'>
-                  <ul>
-                    <li>
-                      <a href="Service 1">Service 1</a></li>
-                    <li><a href="Service 2">Service 2</a></li>
-                    <li> <a href="Service 3">Service 3</a></li>
-                    <li> <a href="Service 4">Service 4</a></li>
-                    <li> <a href="Service 5">Service 5</a></li>
-                  </ul>
-                  {/* <div className='ser-img'>
+          <div className={`mbl-nav ${menu ? "show-mbl-nav" : ""} nav-links`}>
+            <div className='navlist'>
+              <ul className='mbl-ul'>
+                <li><a href="Home">Home</a></li>
+                <li><a href="About">About</a></li>
+                <li className={` ${activedd === "products" ? "angle-down" : ""} mbl-dd`}>
+                  <a href="Products"  onClick={(e)=>angleDownFunc(e,"products")}>Products 
+                    <i class="fa-solid fa-angle-right"></i>
+                   
+                  </a>
+
+                  <div className='show-mbl-dd'>
+                    <ul>
+                      <li>
+                        <a href="Service 1">Service 1</a></li>
+                      <li><a href="Service 2">Service 2</a></li>
+                      <li> <a href="Service 3">Service 3</a></li>
+                      <li> <a href="Service 4">Service 4</a></li>
+                      <li> <a href="Service 5">Service 5</a></li>
+                    </ul>
+                    {/* <div className='ser-img'>
                     <img src="/logo192.png" alt="image" />
                   </div> */}
-                </div>
-              </li>
-              <li className='mbl-dd'><a className="dd-a" href="Service">Service
-              <i class="fa-solid fa-angle-right"></i>
-              </a>
-                <div className='show-mbl-dd'>
-                  <ul>
-                    <li>
-                      <a href="Service 1">Service 1</a></li>
-                    <li><a href="Service 2">Service 2</a></li>
-                    <li> <a href="Service 3">Service 3</a></li>
-                    <li> <a href="Service 4">Service 4</a></li>
-                    <li> <a href="Service 5">Service 5</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li><a href="Blogs">Blogs</a></li>
-              <li><a href="Contact">Contact</a></li>
+                  </div>
+                </li>
+                <li className={` ${activedd === "services" ? "angle-down" : ""} mbl-dd`}>
+                  <a href="Services"  onClick={(e)=>angleDownFunc(e,"services")}>Services 
+                    <i class="fa-solid fa-angle-right"></i>
+                   
+                  </a>
 
-            </ul>
-            <div className='nav-icons'>
-              <a href=""><i class="fa-brands fa-facebook"></i></a>
-              <a href=""><i class="fa-brands fa-instagram"></i></a>
-              <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                  <div className='show-mbl-dd'>
+                    <ul>
+                      <li>
+                        <a href="Service 1">Service 1</a></li>
+                      <li><a href="Service 2">Service 2</a></li>
+                      <li> <a href="Service 3">Service 3</a></li>
+                      <li> <a href="Service 4">Service 4</a></li>
+                      <li> <a href="Service 5">Service 5</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li><a href="Blogs">Blogs</a></li>
+                <li><a href="Contact">Contact</a></li>
 
-              <a href=""><i class="fa-solid fa-envelope"></i></a>
+              </ul>
+              <div className='nav-icons'>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+
+                <a href=""><i class="fa-solid fa-envelope"></i></a>
+              </div>
             </div>
+
           </div>
+
 
 
         </nav>
 
-       
+
 
       </header>
+
+
       <section>
         <div className='hero-img'>
           <img src="./images/wallst.jpg" alt="" />

@@ -4,11 +4,16 @@ import Home from './pages/home';
 import Components from './pages/components';
 import Hooks from './pages/hooks';
 import Header from "./components/header"
+import {ThemeProvider} from './theme-context';
+
 
 function App() {
+
+
   return (
     <BrowserRouter>
-     <Header/>
+    <ThemeProvider>
+    <Header/>
       <div className='App'>
      
       <Routes>
@@ -17,6 +22,8 @@ function App() {
       <Route path='/hooks' element={<Hooks/>}/>
       </Routes>
       </div>
+    </ThemeProvider>
+     
       
     </BrowserRouter>
     
